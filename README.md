@@ -246,3 +246,26 @@ Karena API ini dihosting di Github Page, Github Page sendiri memberikan batasan 
 Karena limitasi ini, disarankan untuk hosting API ini di github kamu sendiri.
 
 Untuk lebih detail tentang limitasi Github Page, bisa dilihat [disini](https://help.github.com/en/articles/about-github-pages#usage-limits).
+
+
+## Git Worktree Command to sync `static/api` to gh-pages branch
+
+### 1. Stay on master repo
+cd /workspaces/api-wilayah-indonesia
+
+### 2. Regenerate / update API data
+### (your script here)
+
+### 3. Commit master changes
+git add static/api
+git commit -m "Update API data"
+
+### 4. Sync to gh-pages
+rm -rf /workspaces/gh-pages/*
+cp -r static/api /workspaces/gh-pages/api
+
+### 5. Commit & push gh-pages
+cd /workspaces/gh-pages
+git add .
+git commit -m "Deploy API"
+git push origin gh-pages
